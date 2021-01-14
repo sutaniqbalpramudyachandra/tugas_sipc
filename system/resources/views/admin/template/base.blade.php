@@ -7,16 +7,18 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <title>SIPC| STORE</title>
-
+@stack('style')
+ 
   @include('admin.template.section.link')
+  
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-  	@include('admin.template.section.header')
-  	@include('admin.template.section.rightnavbar')
+    @include('admin.template.section.header')
+    @include('admin.template.section.rightnavbar')
   </nav>
   <!-- /.navbar -->
 
@@ -31,7 +33,7 @@
         </div>
       </div>
     </div>
-  	@yield('content')
+    @yield('content')
   </div>
   <!-- /.content-wrapper -->
 
@@ -49,7 +51,7 @@
 
 </div>
 <!-- ./wrapper -->
-
 @include('admin.template.section.script')
 </body>
 </html>
+@stack('style')

@@ -16,17 +16,10 @@
 							<h3>{{$produk->nama_produk}}</h3>
 							</div>
 							
+							@include('admin.produk.show.detail')
+
 							<p>
-							
-							{{$produk->harga}}
-							
-							Stok : {{$produk->stok}} |
-							Berat : {{$produk->berat}}kg|
-							Seller : {{$produk->seller->nama}} |
-							Tanggal Produksi : {{$produk->created_at->diffForHumans()}}
-							</p>
-							<p>
-								{!! nl2br($produk->deskripsi) !!}
+								<img style="width:100%" src="{{url("public/$produk->foto")}}" >
 							</p>
 						</tbody>
 					</table>
