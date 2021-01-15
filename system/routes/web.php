@@ -20,6 +20,7 @@ use App\Http\Controllers\KategoriController;
 */
 
 Route::prefix('admin')->group(function(){
+			Route::get('beranda', [HomeController::class, 'showBeranda']);
 			Route::post('produk/filter', [ProdukController::class, 'filter']);
 			Route::resource('produk', ProdukController::class);
 			Route::resource('user', UserController::class);
@@ -55,4 +56,6 @@ Route::get('admin/beranda', function () {
 Route::get('logout', function () {
     return view('admin.login');
 });
+
+Route::get('test-Collection', [HomeController::class, 'testCollection']);
 

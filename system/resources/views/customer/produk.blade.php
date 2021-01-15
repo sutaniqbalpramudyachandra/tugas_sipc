@@ -12,21 +12,21 @@
               </form>
 
             <div class="row">
-                @foreach($show_produk as $data)
+                @foreach($list_produk as $produk)
                 <div class="col-lg-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img src="public/assets/images/product-1-720x480.jpg" alt="" >
+                            <img style="width:100%" src="{{url("public/$produk->foto")}}" >
                         </div>
                         <div class="down-content">
                             <span>
-                                <sup>$</sup>17.00
+                               Rp.{{number_format($produk->harga)}}
                             </span>
 
-                            <h4>{{$data->nama_produk}}</h4>
+                            <h4>{{$produk->nama_produk}}</h4>
 
                             <ul class="social-icons">
-                                <li class="btn btn-success float-right"><a href="{{url('produk_single' ,$data->id)}}">+ Order</a></li>
+                                <li class="btn btn-success float-right"><a href="{{url('produk_single' ,$produk->id)}}">+ Order</a></li>
                             </ul>
                         </div>
                     </div>

@@ -17,13 +17,7 @@
                   </ol>
                   <div class="carousel-inner">
                     <div class="carousel-item active">
-                      <img src="{{url('public')}}/assets/images/product-1-720x480.jpg" alt="" >
-                    </div>
-                    <div class="carousel-item">
-                      <img src="{{url('public')}}/assets/images/product-1-720x480.jpg" alt="" >
-                    </div>
-                    <div class="carousel-item">
-                       <img src="{{url('public')}}/assets/images/product-1-720x480.jpg" alt="" >
+                      <img src="{{url("public/$produk->foto")}}" alt="" >
                     </div>
                   </div>
                   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

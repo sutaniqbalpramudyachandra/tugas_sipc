@@ -8,21 +8,23 @@
             <br>
 
             <div class="row">
-                @foreach($list_produk as $data)
+                @foreach($list_produk as $produk)
                 <div class="col-lg-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img src="{{ url('public/assets/images/product-1-720x480.jpg') }}" alt="">
+                            <img style="width:100%" src="{{url("public/$produk->foto")}}" >
                         </div>
                         <div class="down-content">
                             <span>
-                                <sup>$</sup>17.00
+                                        Rp. {{$produk->harga}}
+                                        Stok : {{$produk->stok}} |
+                                        Berat : {{$produk->berat}} 
+                                    
                             </span>
-
-                            <h4>{{$data->nama_produk}}</h4>
+                            <h4>{{$produk->nama_produk}}</h4>
 
                             <ul class="social-icons">
-                                <li class="btn btn-success float-right"><a href="{{url('produk_single' ,$data->id)}}">+ Order</a></li>
+                                <li class="btn btn-success float-right"><a href="{{url('produk_single' ,$produk->id)}}">+ Order</a></li>
                             </ul>
                         </div>
                     </div>
@@ -32,24 +34,14 @@
 
             <br>
                 
-            <nav>
-              <ul class="pagination pagination-lg justify-content-center">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
+            <nav aria-label="Page navigation example">
+                <div class="container">
+                    <div class="col-md-12" style="text-align: center;">
+                        <ul class="pagination justify-content-center">
+                            {!! $list_produk->links() !!}
+                        </ul>
+                    </div>
+                </div>
             </nav>
 
         </div>
