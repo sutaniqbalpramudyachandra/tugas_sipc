@@ -1,44 +1,74 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers;
 use Auth;
 use App\Models\User;
+use App\Models\Penjual;
+use App\Models\Pembeli;
 
-class AuthController extends Controller
-{
-	function showLoginAdmin(){
+class AuthController extends Controller{
+	function showLogin(){
 		return view('login');
 	}
-
-	function loginProcess(User $user){
-		if(Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
-			return redirect('admin/beranda')->with('success','Login Berhasil, Selamat datang');
-		} else {
-			return back()->with('danger', 'Login gagal, Silahkan coba kembali');
+	function loginProcess(){
+		// Level
+		if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
+			$user = Auth::user();
+			if($user->level == 1) return redirect('admin/beranda/admin')->with('success', 'Selamat Datang ...');
+			if($user->level == 0) return redirect('admin/beranda/pengguna')->with('success', 'Selamat Datang ...');
+		} else{
+			return back()->with('danger', 'Login Gagal, Silahkan Coba Lagi');
 		}
-	}
+		
+		// Multi Auttentikasi 1
+		// $username = request('username');
+		// $user = Pembeli::where('username', $username)->first();
+		// if($user){
+		// 	$guard = 'pembeli';
+		// }else{
+		// 	$user = Penjual::where('username', $username)->first();
+		// 	if($user){
+		// 		$guard = 'penjual';
+		// 	}else{
+		// 		$guard = false;
+		// 	}
+		// }
 
+		// if(!$guard){
+		// 	return back()->with('danger', 'Data Tidak Ditemukan Di Database !!');
+		// }else{
+		// 	if(Auth::guard($guard)->attempt(['username' => request('username'), 'password' => request('password')])){
+		// 		return redirect("beranda/$guard")->with('success', 'Login Berhasil...');
+		// 	}else{
+		// 		return back()->with('danger', 'Login Gagal, Silahkan Coba Lagi');
+		// 	}
+		// }
+
+		// Multi Auttentikasi
+		// if(request('login_as') == 1){
+		// 	if(Auth::guard('pembeli')->attempt(['username' => request('username'), 'password' => request('password')])){
+		// 		return redirect('beranda/pembeli')->with('success', 'Login Berhasil...');
+		// 	} else{
+		// 		return back()->with('danger', 'Login Gagal, Silahkan Coba Lagi');
+		// 	}
+		// }else{
+		// 	if(Auth::guard('penjual')->attempt(['username' => request('username'), 'password' => request('password')])){
+		// 		return redirect('beranda/penjual')->with('success', 'Login Berhasil...');
+		// 	} else{
+		// 		return back()->with('danger', 'Login Gagal, Silahkan Coba Lagi');
+		// 	}
+		// }
+	}
 	function logout(){
 		Auth::logout();
+		Auth::guard('pembeli')->logout();
+		Auth::guard('penjual')->logout();
 		return redirect('login');
 	}
-
-	function showRegistration(){
-		return view('indexRegistration');
+	function showRegister(){
+		return view('register');
 	}
-
-	function storeRegistration(){
-		$user = new User;
-		$user->nama_user = request('nama_user');
-		$user->username = request('username');
-		$user->email = request('email');
-		$user->password = bcrypt(request('password'));
-		$user->save();
-
-		return redirect('login')->with('success','Data Berhasil Ditambahkan');
-	}
-
 	function forgotPassword(){
-		
+		// return view('login');
 	}
 }

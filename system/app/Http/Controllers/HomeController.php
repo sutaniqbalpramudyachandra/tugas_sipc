@@ -17,7 +17,7 @@ class HomeController extends Controller{
 	}
 
 	function showBeranda ()	{
-		return view('beranda');
+		return view('admin.beranda');
 	}
 
 	function showProduk ()	{

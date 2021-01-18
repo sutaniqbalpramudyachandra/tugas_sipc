@@ -9,26 +9,30 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\UserDetail;
 use App\Models\Produk;
 
-class Pembeli extends Authenticatable {
-
-	protected $table = 'pembeli';
+class Pembeli extends Authenticatable
+{
+    protected $table = 'pembeli';
     use HasFactory, Notifiable;
 
-    function detail(){
-    	return $this->hasOne(UserDetail::class, 'id_user');
+    // untuk merelasikan one to one ke user detail
+    function detail()
+    {
+        return $this->hasOne(UserDetail::class, 'id_user'); //id_user adalah foreign key nya
     }
 
-    function produk(){
-    	return $this->hasMany(Produk::class, 'id_user');
+    // one to many, merelasikan user dengan produk
+    function produk()
+    {
+        return $this->hasMany(Produk::class, 'id_user'); //id_user adalah foreign key nya
     }
-    function getJenisKelaminStringAttribute(){
-    	return ($this->jenis_kelamin==1 ) ? "Laki-laki": "Perempuan" ;  
+
+    function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
     }
-    function setPasswordAttribute($value){
-    	$this->attributes['password'] = bcrypt($value);
-    }
-    function setUsernameAttribute($value){
-    	$this->attributes['username']= strtolower($value);
+
+    function setUsernameAttribute($value)
+    {
+        $this->attributes['username'] = strtolower($value);
     }
 }
-

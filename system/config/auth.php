@@ -40,7 +40,15 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+        'pembeli' => [
+            'driver' => 'session',
+            'provider' => 'pembeli',
+        ],
+        'penjual' => [
+            'driver' => 'session',
+            'provider' => 'penjual',
+        ],
+        
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -69,17 +77,19 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
-        ],
-         'penjual' => [
+        ], 
+        'penjual' => [
             'driver' => 'eloquent',
             'model' => App\Models\Penjual::class,
         ],
-         'pembeli' => [
+        'pembeli' => [
             'driver' => 'eloquent',
             'model' => App\Models\Pembeli::class,
         ],
-
-
+        // 'pembeli' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Admin::class,
+        // ],
 
         // 'users' => [
         //     'driver' => 'database',

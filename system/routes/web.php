@@ -7,6 +7,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ClientProdukController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +19,21 @@ use App\Http\Controllers\KategoriController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Route::get('/',function(){
+//     return view('welcome');
+// }
 Route::prefix('admin')->group(function(){
             Route::get('beranda', [HomeController::class, 'showBeranda']);
+            Route::get('beranda/{status}', [HomeController::class, 'showBeranda']);
             Route::post('produk/filter', [ProdukController::class, 'filter']);
             Route::resource('produk', ProdukController::class);
             Route::resource('user', UserController::class);
             Route::resource('kategori', KategoriController::class);
+
+
 });
+ 
+
 
     //login Admin
 Route::get('login', [AuthController::class, 'showLoginAdmin'])->name('login');
@@ -61,4 +69,8 @@ Route::get('test-Collection', [HomeController:: class, 'testCollection']);
 
 // wilayah - ajax
 Route::get('test-ajax', [HomeController:: class, 'testAjax']);
+
+// Setting
+Route::get('setting', [SettingController::class, 'index']);
+Route::post('setting', [SettingController::class, 'store']);
 

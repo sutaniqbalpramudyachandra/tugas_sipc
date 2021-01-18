@@ -8,24 +8,26 @@
 				<div class="card-header">
 					Tambah Data User
 				</div>
-				<div class="card-body">
+				<div class="card-body">					
 					<form action="{{url('admin/user')}}" method="post">
 						@csrf
 					<div class="form-group">
 						<label for="" class="control-label">Nama </label>
+						@include('admin.template.utils.errors', ['item' => 'nama'])
 						<input type="text" name="nama" class="form-control">
 					</div>
 
 					<div class="form-group">
-						<label for="" class="control-label">Username </label>
-						<input type="text" name="username" class="form-control">
-					</div>
+							<label class="control-label">Username</label>
+							@include('admin.template.utils.errors', ['item' => 'username'])
+							<input type="text" class="form-control" name='username'></input>
+						</div>
 
 					<div class="form-group">
-						<label for="" class="control-label">Email </label>
-						<input type="text" name="email" class="form-control">
-					</div>
-
+							<label class="control-label">Email</label>
+							@include('admin.template.utils.errors', ['item' => 'email'])
+							<input type="email" class="form-control" name='email'></input>
+						</div>
 					<div class="form-group">
 						<label for="" class="control-label">Password </label>
 						<input type="password" name="password" class="form-control">
