@@ -20,10 +20,10 @@ use App\Http\Controllers\KategoriController;
 */
 
 Route::prefix('admin')->group(function(){
-			Route::get('beranda', [HomeController::class, 'showBeranda']);
-			Route::post('produk/filter', [ProdukController::class, 'filter']);
-			Route::resource('produk', ProdukController::class);
-			Route::resource('user', UserController::class);
+            Route::get('beranda', [HomeController::class, 'showBeranda']);
+            Route::post('produk/filter', [ProdukController::class, 'filter']);
+            Route::resource('produk', ProdukController::class);
+            Route::resource('user', UserController::class);
             Route::resource('kategori', KategoriController::class);
 });
 
@@ -57,5 +57,8 @@ Route::get('logout', function () {
     return view('admin.login');
 });
 
-Route::get('test-Collection', [HomeController::class, 'testCollection']);
+Route::get('test-Collection', [HomeController:: class, 'testCollection']);
+
+// wilayah - ajax
+Route::get('test-ajax', [HomeController:: class, 'testAjax']);
 

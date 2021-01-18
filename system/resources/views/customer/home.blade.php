@@ -16,7 +16,7 @@
                         </div>
                         <div class="down-content">
                             <span>
-                                        Rp. {{$produk->harga}}
+                                        Rp. {{number_format($produk->harga)}}
                                         Stok : {{$produk->stok}} |
                                         Berat : {{$produk->berat}} 
                                     

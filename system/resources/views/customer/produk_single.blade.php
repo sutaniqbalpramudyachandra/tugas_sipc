@@ -40,19 +40,21 @@
                       <h3>{{$produk->nama_produk}}</h3>
                     </div>
                     
-                    <label>stok : {{$produk->stok}} | berat : {{$produk->berat}}  </label>
+                    <label>Stok : {{$produk->stok}} | berat : {{$produk->berat}} kg.  </label>
                     <div class="row">
                       <div class="col-md-6">
-                        <label>harga</label><br>
-                        Rp. {{number_format($produk->harga)}}
+                        <label>Harga :</label>
+                       <h3> Rp. {{number_format($produk->harga)}} </h3>
                       </div>
                     </div>
                     
                     <div class="main-button">
-                        <p>{!! nl2br($produk->deskripsi) !!}</p>
+                        <p>
+                          Deskripsi Barang: <br>
+                          {!! nl2br($produk->deskripsi) !!}</p>
                     </div>
 
-                    <label>Seller : {{$produk->seller->nama}}</label>
+                    <label><br>Seller : {{$produk->seller->nama}}</label>
 
                   </form>
                 </div>
